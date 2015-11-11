@@ -27,6 +27,11 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
   }
 }
 
+#chosen-wrapper .chosen-container-active, #chosen-wrapper .chosen-container-multi{
+    line-height: 30px;
+    vertical-align: middle;
+}
+
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
  *  all your sass files automatically
