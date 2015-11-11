@@ -10,12 +10,18 @@
     <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
     <!-- bower:css -->
     <!-- run `gulp inject` to automatically populate bower styles dependencies -->
+    <link  rel="stylesheet" type="text/css" href="/bower_components/angular-chosen-localytics/chosen-spinner.css">
+    <link  rel="stylesheet" type="text/css" href="/bower_components/chosen/chosen.min.css">
+
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:css({.tmp/serve,src}) styles/app.css -->
     <!-- inject:css -->
     <!-- css files will be automatically insert here -->
+     <link  rel="stylesheet" type="text/css" href="/bower_components/angular-chosen-localytics/chosen-spinner.css">
+         <link  rel="stylesheet" type="text/css" href="/bower_components/chosen/chosen.min.css">
+
     <!-- endinject -->
     <!-- endbuild -->
   </head>
@@ -30,10 +36,14 @@
     <!-- bower:js -->
     <!-- run `gulp inject` to automatically populate bower script dependencies -->
     <!-- endbower -->
+    <script src="/bower_components/chosen/chosen.jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/bower_components/angular-chosen-localytics/chosen.js" type="text/javascript" charset="utf-8"></script>
     <!-- endbuild -->
 
     <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
     <!-- inject:js -->
+      <script src="/bower_components/chosen/chosen.jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/bower_components/angular-chosen-localytics/chosen.js" type="text/javascript" charset="utf-8"></script>
     <!-- js files will be automatically insert here -->
     <!-- endinject -->
 

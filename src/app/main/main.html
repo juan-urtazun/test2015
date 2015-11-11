@@ -3,7 +3,16 @@
   <div>
     <acme-navbar creation-date="main.creationDate"></acme-navbar>
   </div>
-
+ <div class="row">
+    <div class="col-sm-6 col-md-4" id="chosen-wrapper">
+      <select class="col-sm-12 col-md-12" multiple
+              chosen
+              ng-model="main.state"
+              ng-options="s.label for s in main.states"
+              ng-change="main.changeOptions($event)">
+      </select>
+   </div>
+ </div>
   <div class="jumbotron text-center">
     <h1>'Allo, 'Allo!</h1>
     <p class="lead">
@@ -19,7 +28,7 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-6 col-md-4" ng-repeat="awesomeThing in main.awesomeThings | orderBy:'rank'">
+    <div class="col-sm-6 col-md-4" ng-repeat="awesomeThing in awesomeThing.awesomeThings | orderBy:'rank'">
       <div class="thumbnail">
         <img class="pull-right" ng-src="assets/images/{{ awesomeThing.logo }}" alt="{{ awesomeThing.title }}">
         <div class="caption">

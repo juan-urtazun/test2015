@@ -8,6 +8,12 @@
   /** @ngInject */
   function MainController($timeout, webDevTec, toastr) {
     var vm = this;
+    vm.changeOptions = function(){
+      console.log("new state", vm.state);
+    }
+    vm.states = [{id:1, label:"ana maria"},
+    {id:2, label:"celina"},
+     {id:3, label:"otra"}]
 
     vm.awesomeThings = [];
     vm.classAnimation = '';
