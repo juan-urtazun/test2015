@@ -9,7 +9,7 @@
   function runBlock($log, $rootScope, $state) {
 
     $log.debug('runBlock end');
-    $rootScope.go = $state.go.bind($state);
+    $rootScope.$state = $state;
   }
 
 })();

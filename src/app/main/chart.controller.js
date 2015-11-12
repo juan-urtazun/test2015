@@ -8,11 +8,25 @@
   /** @ngInject */
   function ChartController( $log, $state, apiService, $stateParams ) {
     var vm = this;
-    vm.$state = $state;
+    vm.onFilter = function( event ){
+        event.stopPropagation();
+        getChartProps( vm.filters );
+    }
 
-    apiService.getPropsForChart($stateParams.type).then(function( chartProps ){
-        vm.chartProps = chartProps;
-    });
+
+    function getChartProps( filters ){
+      apiService.getPropsForChart($stateParams.type ||'line', filters)
+        .then(function( chartProps ){
+          vm.chartProps = chartProps;
+        });
+    }
+
+
+    function init(){
+      getChartProps();
+    }
+
+    init();
   }
 })();
 

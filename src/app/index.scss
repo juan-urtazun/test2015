@@ -56,9 +56,11 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
     margin-left: auto;
     margin-right: auto;
 }
-
-.jumbotron{
-
+.nav .navbar-nav > li:hover{
+  cursor:pointer;
+}
+#chosen-wrapper{
+      margin-bottom: 25px;
 }
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject

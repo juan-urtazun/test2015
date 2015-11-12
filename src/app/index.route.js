@@ -20,10 +20,29 @@
       .state('home.chart', {
         url: '/:type',
         templateUrl: function($stateParams){
-          console.log("$stateParams", $stateParams);
           var c_type = $stateParams.type || 'line';
           return 'app/main/main.chart.' + c_type + '.html'
         },
+        controller: 'ChartController',
+        controllerAs: 'chart'
+      });
+
+
+    $stateProvider
+      .state('home.chart.advance', {
+        url: '/:type',
+        views:{
+          "":{templateUrl: function($stateParams){
+            var c_type = $stateParams.type || 'line';
+            return 'app/main/main.chart.' + c_type + '.html'
+          }
+        },
+        "chosen":{
+          templateUrl:'app/main/chosen.html',
+            controller: function($scope){
+            },
+        }
+      },
         controller: 'ChartController',
         controllerAs: 'chart'
       });

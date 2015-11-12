@@ -6,22 +6,21 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, $log, $state, lodash, webDevTec, toastr, apiService, $stateParams ) {
+  function MainController($timeout, $log, $rootScope, lodash, webDevTec, toastr, apiService, $stateParams ) {
     var vm = this;
-    vm.$state = $state;
-    vm.changeOptions = function(){
-      $log.info("new state", vm.state);
-    }
-/*
-    vm.states = [{id:1, label:"ana maria"},
-    {id:2, label:"celina"},
-     {id:3, label:"otra"}]*/
+    vm.$state = $rootScope.$state;
+    vm.btnClass = 'glyphicon glyphicon-eye-open';
+
+
 
     vm.awesomeThings = [];
 
     apiService.getQuestion().then(function( question ){
         vm.question = question;
-        $log.info( "getQuestion", question );
+    });
+
+    apiService.getUserTags().then(function( userTags ){
+        vm.userTags = userTags;
     });
 
     apiService.getPropsForChart($stateParams.type).then(function( chartProps ){
@@ -33,7 +32,17 @@
         console.log(points, evt);
     };
 
-      getWebDevTec();
+    vm.toggleFilterBtn = function(){
+      vm.showFilters = !vm.showFilters;
+      vm.btnClass = vm.showFilters ? 'glyphicon glyphicon-eye-close' : 'glyphicon glyphicon-eye-open';
+      vm.filters = ($rootScope.$state.current.params) ? $rootScope.$state.current.params.filters : undefined;
+      if(!vm.showFilters){
+         $rootScope.$state.go('home.chart',$rootScope.$state.current.params);
+      }else{
+          $rootScope.$state.go('home.chart.advance', $rootScope.$state.current.params);
+      }
+    }
+    getWebDevTec();
 
 
 
@@ -44,8 +53,6 @@
 
     function getWebDevTec() {
       vm.awesomeThings = webDevTec.getTec();
-      console.log("awesomeThings", vm.awesomeThings);
-
       angular.forEach(vm.awesomeThings, function(awesomeThing) {
         awesomeThing.rank = Math.random();
       });

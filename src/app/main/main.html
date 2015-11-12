@@ -1,9 +1,7 @@
 <div class="container">
-
   <div>
     <acme-navbar creation-date="main.creationDate"></acme-navbar>
   </div>
-
 <div class="page-header">
   <h3>{{ main.question }}</h3>
 </div>
@@ -24,9 +22,15 @@
       </ul>
     </nav>
   </div>
-<div class="container">
+
   <div class="jumbotron text-center">
        <div class="row">
+          <div class="col-sm-4 col-md-2" id="chosen-wrapper">
+              <a ui-sref="home.chart.advance" class="btn btn-success" ng-click=main.toggleFilterBtn($event)> Ver filtros Avanzados
+                  <span ng-class="main.btnClass" aria-hidden="true"></span>
+              </a>
+
+          </div>
           <div ui-view></div>
      </div>
    </div>

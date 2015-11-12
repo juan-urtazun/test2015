@@ -1,0 +1,18 @@
+
+  <div class="row">
+      <div class="col-sm-8 col-md-10" id="chosen-wrapper">
+        <select class="col-sm-12 col-md-12" multiple
+                chosen
+                ng-model="chart.filters"
+                ng-options="s.label for s in main.userTags"
+                >
+        </select>
+     </div>
+      <div class="col-sm-4 col-md-2" id="chosen-wrapper">
+        <button ng-click="chart.onFilter($event)" type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
+        <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+          Filtrar
+        </button>
+
+     </div>
+   </div>
