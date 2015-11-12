@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, $log, $state, lodash, webDevTec, toastr, apiService ) {
+  function MainController($timeout, $log, $state, lodash, webDevTec, toastr, apiService, $stateParams ) {
     var vm = this;
     vm.$state = $state;
     vm.changeOptions = function(){
@@ -19,18 +19,13 @@
 
     vm.awesomeThings = [];
 
-
-
     apiService.getQuestion().then(function( question ){
         vm.question = question;
         $log.info( "getQuestion", question );
     });
 
-
-    apiService.getTotalAnswers().then( function(anwsers ){
-      vm.labels = lodash.pluck(anwsers,  'text');
-      vm.series = ["Porcentaje", "Respuestas"];
-      vm.data = [ lodash.pluck(anwsers,  'percentage'), lodash.pluck(anwsers,  'count') ];
+    apiService.getPropsForChart($stateParams.type).then(function( chartProps ){
+        vm.chartProps = chartProps;
     });
 
     vm.onClick = function (points, evt) {

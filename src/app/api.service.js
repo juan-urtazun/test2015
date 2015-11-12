@@ -1,12 +1,14 @@
 (function() {
   'use strict';
 
+
+
   angular
     .module('test2015')
     .factory('apiService', apiService);
 
   /** @ngInject */
-  function apiService($log, $q, $timeout, mockDataService) {
+  function apiService($log, $q, $timeout, $state, lodash, mockDataService) {
     var mockData = {};
     var dataPromise = mockDataService.getMock();
 
@@ -18,7 +20,8 @@
     var service = {
       data: undefined,
       getQuestion: getQuestion,
-      getTotalAnswers: getTotalAnswers
+      getTotalAnswers: getTotalAnswers,
+      getPropsForChart: getPropsForChart
      };
 
 
@@ -32,7 +35,7 @@
         dataPromise.then(function( result ){
           $timeout(function() {
             deferred.resolve( getterCb() );
-         }, 500);
+         }, 5);
         });
       }else{
         deferred.resolve( getterCb() );
@@ -57,12 +60,37 @@
     }
 
     function _getTotalAnswers(){
-      return service.data.answers;
+      var anwsers = service.data.answers;
+      var chartProps = {};
+
+      chartProps.labels = lodash.pluck(anwsers,  'text');
+      chartProps.series = ["Porcentaje", "Respuestas"];
+      chartProps.data = [ lodash.pluck(anwsers,  'percentage'), lodash.pluck(anwsers,  'count') ];
+      return chartProps;
     }
 
     function getTotalAnswers(){
       return _getData( _getTotalAnswers );
     }
+
+
+
+    function getPropsForChart ( c_type ) {
+      var availableCharts = {
+        line: getTotalAnswers
+      };
+       try{
+        return availableCharts[c_type].call();
+
+       }catch( e ){
+
+        $log.error("Error", e);
+          $state.go("error");
+       }
+      // body...
+    }
+
+
 
   }
 })();
