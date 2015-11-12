@@ -42,7 +42,6 @@
     }
 
     function _getQuestion(){
-      debugger;
       return service.data.question;
     }
     function getQuestion() {
