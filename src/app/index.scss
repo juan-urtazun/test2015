@@ -44,6 +44,22 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
     color: #463265;
     background-color: #eeeeee;
 }
+.doughnut-legend li{
+    width: 260px;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+}
+.polararea-legend li{
+    width: 260px;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.jumbotron{
+
+}
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
  *  all your sass files automatically
