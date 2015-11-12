@@ -21,11 +21,22 @@
     return directive;
 
     /** @ngInject */
-    function NavbarController(moment) {
+    function NavbarController( $stateParams,  $rootScope ) {
       var vm = this;
+      vm.active_home = !$stateParams.filters
+      vm.active_home_advanced = $stateParams.filters
+      vm.toggleClass= function( linkEnabled, linkDisables, $state){
+        debugger;
+        vm[linkEnabled] = true;
+        vm[linkDisables] = false;
+        debugger;
+        if(vm.active_home){
+           $rootScope.$state.go('home.chart', {type:'line'});
+        }else{
+            $rootScope.$state.go('home.chart.advance', {type:'line'});
+        }
 
-      // "vm.creation" is avaible by directive option "bindToController: true"
-      vm.relativeDate = moment(vm.creationDate).fromNow();
+      }
     }
   }
 
