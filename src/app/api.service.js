@@ -95,7 +95,8 @@
         line: getTotalAnswers,
         bar: getTotalAnswers,
         doughnut: getTotalAnswersForDoughnut,
-        'polar-area': getTotalAnswersForDoughnut
+        'polar-area': getTotalAnswersForDoughnut,
+        radar: getTotalAnswers
       };
        try{
         return availableCharts[c_type].call();
