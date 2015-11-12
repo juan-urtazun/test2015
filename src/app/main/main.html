@@ -13,6 +13,14 @@
       </select>
    </div>
  </div>
+
+ <div class="row" ng-controller="LineController as line">
+    <div class="col-sm-6 col-md-4" id="chosen-wrapper">
+    <canvas id="line" class="chart chart-line" chart-data="line.data" chart-labels="line.labels"
+    chart-legend="true" chart-series="line.series" chart-click="line.onClick"></canvas>
+   </div>
+ </div>
+
   <div class="jumbotron text-center">
     <h1>'Allo, 'Allo!</h1>
     <p class="lead">

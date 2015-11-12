@@ -6,10 +6,10 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, toastr) {
+  function MainController($timeout, webDevTec, toastr, $log) {
     var vm = this;
     vm.changeOptions = function(){
-      console.log("new state", vm.state);
+      $log.info("new state", vm.state);
     }
     vm.states = [{id:1, label:"ana maria"},
     {id:2, label:"celina"},
@@ -43,3 +43,4 @@
     }
   }
 })();
+
