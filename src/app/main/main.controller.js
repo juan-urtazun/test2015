@@ -6,15 +6,16 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, toastr, $log, apiService) {
+  function MainController($timeout, webDevTec, toastr, $log, apiService, $state) {
     var vm = this;
+    vm.$state = $state;
     vm.changeOptions = function(){
       $log.info("new state", vm.state);
     }
 
     apiService.getQuestion().then(function( question ){
       vm.question = question;
-      console.info( "getQuestion", question );
+      $log.info( "getQuestion", question );
     })
 
     vm.states = [{id:1, label:"ana maria"},

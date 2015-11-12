@@ -15,7 +15,15 @@
         controllerAs: 'main'
       });
 
-    $urlRouterProvider.otherwise('/');
+    $stateProvider
+        .state('depExamples', {
+          url: '/depExamples',
+          templateUrl: 'app/mock/depsExamples.html',
+          controller: 'MainController',
+          controllerAs: 'main'
+        });
+
+      $urlRouterProvider.otherwise('/');
   }
 
 })();
