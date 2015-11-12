@@ -94,7 +94,8 @@
       var availableCharts = {
         line: getTotalAnswers,
         bar: getTotalAnswers,
-        doughnut: getTotalAnswersForDoughnut
+        doughnut: getTotalAnswersForDoughnut,
+        'polar-area': getTotalAnswersForDoughnut
       };
        try{
         return availableCharts[c_type].call();
