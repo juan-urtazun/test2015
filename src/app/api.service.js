@@ -69,8 +69,23 @@
       return chartProps;
     }
 
+
+    function _getTotalAnswersForDoughnut(){
+      var anwsers = service.data.answers;
+      var chartProps = {};
+
+      chartProps.labels = lodash.pluck(anwsers,  'text');
+      chartProps.percentage = lodash.pluck(anwsers,  'percentage') ;
+      chartProps.count = lodash.pluck(anwsers,  'count') ;
+      return chartProps;
+    }
+
     function getTotalAnswers(){
       return _getData( _getTotalAnswers );
+    }
+
+    function getTotalAnswersForDoughnut(){
+      return _getData( _getTotalAnswersForDoughnut );
     }
 
 
@@ -78,7 +93,8 @@
     function getPropsForChart ( c_type ) {
       var availableCharts = {
         line: getTotalAnswers,
-        bar: getTotalAnswers
+        bar: getTotalAnswers,
+        doughnut: getTotalAnswersForDoughnut
       };
        try{
         return availableCharts[c_type].call();
