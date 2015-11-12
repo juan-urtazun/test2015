@@ -4,22 +4,29 @@
     <acme-navbar creation-date="main.creationDate"></acme-navbar>
   </div>
 
+<div class="page-header">
+  <h3>{{ main.question }}</h3>
+</div>
   <div class="jumbotron text-center">
-    <h1>{{ main.question }}</h1>
-    <p class="lead">
-      <img src="assets/images/yeoman.png" alt="I'm Yeoman"><br>
-      Always a pleasure scaffolding your apps.
-    </p>
-    <p class="animated infinite" ng-class="main.classAnimation">
-      <button type="button" class="btn btn-lg btn-success" ng-click="main.showToastr()">Splendid Toastr</button>
-    </p>
-    <p>
-      With ♥ thanks to the contributions of<acme-malarkey extra-values="['Yeoman', 'Gulp', 'Angular']"></acme-malarkey>
-    </p>
+       <div class="row">
+      <div class="col-sm-12 col-md-12" id="chosen-wrapper">
+        <canvas id="line" class="chart chart-line"
+                chart-data="main.data"
+                chart-labels="main.labels"
+                chart-legend="true"
+                chart-series="main.series"
+                chart-click="main.onClick">
+        </canvas>
+     </div>
+   </div>
   </div>
 
+
+
   <div class="row">
-    <div class="col-sm-6 col-md-4" ng-repeat="awesomeThing in awesomeThing.awesomeThings | orderBy:'rank'">
+
+  <p class="text-info">Power by:</p>
+    <div class="col-sm-6 col-md-4" ng-repeat="awesomeThing in main.awesomeThings | orderBy:'rank'">
       <div class="thumbnail">
         <img class="pull-right" ng-src="assets/images/{{ awesomeThing.logo }}" alt="{{ awesomeThing.title }}">
         <div class="caption">

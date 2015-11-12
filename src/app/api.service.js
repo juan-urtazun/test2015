@@ -6,7 +6,7 @@
     .factory('apiService', apiService);
 
   /** @ngInject */
-  function apiService($log, $q, mockDataService) {
+  function apiService($log, $q, $timeout, mockDataService) {
     var mockData = {};
     var dataPromise = mockDataService.getMock();
 
@@ -17,8 +17,11 @@
 
     var service = {
       data: undefined,
-      getQuestion: getQuestion
+      getQuestion: getQuestion,
+      getTotalAnswers: getTotalAnswers
      };
+
+
 
     return service;
 
@@ -27,8 +30,12 @@
       var promise = deferred.promise;
       if(!service.data){
         dataPromise.then(function( result ){
-          deferred.resolve( getterCb() );
+          $timeout(function() {
+            deferred.resolve( getterCb() );
+         }, 500);
         });
+      }else{
+        deferred.resolve( getterCb() );
       }
       return promise;
     }
@@ -44,8 +51,18 @@
     function _getQuestion(){
       return service.data.question;
     }
+
     function getQuestion() {
        return _getData( _getQuestion );
     }
+
+    function _getTotalAnswers(){
+      return service.data.answers;
+    }
+
+    function getTotalAnswers(){
+      return _getData( _getTotalAnswers );
+    }
+
   }
 })();
