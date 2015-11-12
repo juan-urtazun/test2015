@@ -39,7 +39,7 @@
         },
         "chosen":{
           templateUrl:'app/main/chosen.html',
-            controller: function($scope){
+            controller: function(){
             },
         }
       },

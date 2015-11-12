@@ -34,13 +34,14 @@
           <div ui-view></div>
      </div>
    </div>
-  </div>
+
 
 
 
   <div class="row">
+   <div class="col-sm-12 col-md-12">
 
-  <p class="text-info">Power by:</p>
+  <p class="text-info">Tecnologias usadas:</p>
     <div class="col-sm-6 col-md-4" ng-repeat="awesomeThing in main.awesomeThings | orderBy:'rank'">
       <div class="thumbnail">
         <img class="pull-right" ng-src="assets/images/{{ awesomeThing.logo }}" alt="{{ awesomeThing.title }}">
@@ -51,6 +52,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 
 </div>
