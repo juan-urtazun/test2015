@@ -77,7 +77,8 @@
 
     function getPropsForChart ( c_type ) {
       var availableCharts = {
-        line: getTotalAnswers
+        line: getTotalAnswers,
+        bar: getTotalAnswers
       };
        try{
         return availableCharts[c_type].call();
@@ -87,7 +88,6 @@
         $log.error("Error", e);
           $state.go("error");
        }
-      // body...
     }
 
 

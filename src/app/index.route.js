@@ -24,8 +24,8 @@
           var c_type = $stateParams.type || 'line';
           return 'app/main/main.chart.' + c_type + '.html'
         },
-        controller: 'MainController',
-        controllerAs: 'main'
+        controller: 'ChartController',
+        controllerAs: 'chart'
       });
 
     $stateProvider

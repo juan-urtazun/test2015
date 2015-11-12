@@ -25,6 +25,7 @@
     });
 
     apiService.getPropsForChart($stateParams.type).then(function( chartProps ){
+        vm.chartType = "chart chart-" + $stateParams.type;
         vm.chartProps = chartProps;
     });
 
